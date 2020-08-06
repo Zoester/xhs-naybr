@@ -7,8 +7,8 @@ App({
      wx.getUserInfo,
      wx.requestPayment)
 
-    wx.BaaS.init('9d9042e3aaaf5ab6d65c')
-    wx.BaaS.auth.loginWithWechat() // 静默登录
+    wx.BaaS.init('90190b5017c422245520')
+    // wx.BaaS.auth.loginWithWechat() // 静默登录
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
