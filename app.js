@@ -1,6 +1,14 @@
 //app.js
 App({
   onLaunch: function () {
+    wx.BaaS = requirePlugin('sdkPlugin')
+    //让插件帮助完成登录、支付等功能
+    wx.BaaS.wxExtend(wx.login,
+     wx.getUserInfo,
+     wx.requestPayment)
+
+    wx.BaaS.init('9d9042e3aaaf5ab6d65c')
+    wx.BaaS.auth.loginWithWechat() // 静默登录
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
