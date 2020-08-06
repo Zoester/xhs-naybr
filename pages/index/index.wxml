@@ -1,2 +1,24 @@
 <!--index.wxml-->
 
+<view class="header">
+  <view class="header-title">
+    <icon class="fas fa-headphones"></icon>
+    <view class="h1">音乐盒</view>
+    <view class="h2">Music Box</view>
+  </view>
+</view>
+
+<view class="container">
+
+  <view class="card-product" wx:for="{{productCard}}" wx:for-item="pc">
+    <view wx:for="{{pc.photos}}" wx:for-item="pcPhoto"></view>
+      <image class="productCardImage" src="{{pcPhoto}}"></image>
+    <view class="h3" bindtap="toProductCard" data-id="{{pc.id}}">{{pc.name}}</view>
+    <view class="h3">{{pc.description}}</view>
+  </view>
+
+
+
+
+</view>
+
