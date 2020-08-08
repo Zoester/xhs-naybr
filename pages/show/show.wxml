@@ -1,4 +1,5 @@
 <!--pages/show/show.wxml-->
+
 <text>pages/show/show.wxml</text>
 
 <view class="card">
@@ -22,6 +23,7 @@
         <button type="primary" formType="submit">Add Review</button>
       </view>
     </form>
+
     <view wx:for="{{reviews}}" class="review-items" wx:for-item="review" wx:key="id">
       <view class="content">{{review.reviews}}</view>
     </view>

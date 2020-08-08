@@ -1,5 +1,6 @@
 // pages/show/show.js
 const app = getApp();
+
 Page({
 
   /**
@@ -13,13 +14,13 @@ Page({
     reviews:[],
     likes:null,
     bookmarks:[],
-
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+
     this.setData({
       currentUser: app.globalData.userInfo,
     });
@@ -146,12 +147,6 @@ Page({
 
 
   },
-
-
-
-
-
-
 
 
   /**
