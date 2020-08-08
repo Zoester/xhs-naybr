@@ -4,14 +4,23 @@
   <view class="p">Your saved items</view>
 </view>
   <view class="container">
-  <view class="card-product" wx:for="{{bookmarks}}" item="bookmarks"> 
-    <view class="h1">Event: {{item.card_id.name}}</view>
-    <view class="h2">Likes: {{item.card_id.likes}}</view>
-    <view>
-      <image class="productCardImage" src="{{item.card_id.photos}}"></image>
-    </view>
-    <view class="right">
-    <button size="mini" data-id="{{meal.id}}" type="primary" bindtap="createBookmark"></button>
+    <view class="grid">
+      <view class="card-product" wx:for="{{bookmarks}}"> 
+        <view class="card-product-inside">
+        <view style="margin: 20px">
+          <view class="h1">Event: {{item.card_id.name}}</view>
+          <view class="h2">Likes: {{item.card_id.likes}}</view>
+        </view>
+        <view>
+          <view>
+            <image class="productCardImage" src="{{item.card_id.photos}}"></image>
+          </view>
+        </view>
+        <view>
+          <van-icon name="checked" color="green" size="40px"/>
+          <van-icon name="clear" color="red" size="40px"/>
+      </view>
+     </view>
     </view> 
   </view>  
 </view> 
