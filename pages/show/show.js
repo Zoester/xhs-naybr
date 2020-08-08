@@ -1,6 +1,7 @@
 // pages/show/show.js
 
 const app = getApp();
+
 Page({
 
   /**
@@ -12,8 +13,9 @@ Page({
     allCard:{},
     productcard:{},
     desc:{},
-    reviews:[]
-
+    reviews:[],
+    likes:null,
+    bookmarks:[],
   },
 
   /**
@@ -21,7 +23,7 @@ Page({
    */
   onLoad: function (options) {
 
-    console.log(options)
+
     this.setData({
       currentUser: app.globalData.userInfo,
     });
@@ -48,6 +50,7 @@ Page({
       console.log(res);
       this.setData({
         productcard: res.data,
+        likes:res.data.likes
       })
     });
 
@@ -68,35 +71,85 @@ Page({
   createReview:function(event){
     console.log('create review',event);
     const content = event.detail.value.content;
+    console.log('clicked content', content);
 
     let Review = new wx.BaaS.TableObject('review');
+    //create empty record locally
     let newReview = Review.create();
     console.log('what is data', this.data)
+    //create data and then pass data inside local record
     const data = {
-      product_id: this.data.restaurant.id,
-      review: content,
+      product_id: this.options.id,
+      reviews: content,
     }
     
     newReview.set(data);
+    //record in BaaS
     newReview.save().then((res)=>{
       console.log('save res',res);
-      const newReviews = this.data.comments;
+      const newReviews = this.data.reviews;
       newReviews.push(res.data);
 
       this.setData({
-        comments:newReviews,
+        reviews:newReviews,
+
+      })
+    }) 
+  },
+
+  //click heart to like
+ voteUp(event){
+    console.log('like',event)
+    let likes = this.data.productcard.likes
+    let cardLikes = new wx.BaaS.TableObject('productCard')
+    let product = cardLikes.getWithoutData(event.currentTarget.dataset.id)
+    console.log('productValue', product)
+    product.set("likes", likes + 1).update().then((res)=>{
+      console.log("res",res)
+      this.setData({
+        likes:res.data.likes
+      })
+
+    });
+  },
+
+  navigateToProfile(){
+    wx.reLaunch({
+      url: '/pages/profile/profile',
+    })
+  },
+
+  addToBookmark(e){
+    console.log('bookmark',e)
+    let bookmark = new wx.BaaS.TableObject('cart')
+    bookmark.find().then((res)=>{
+      console.log('bookmarkTable', res)
+      this.setData({
+        bookmarks: res.data.objects,
+        user: this.data.currentUser
+      })
+    })
+    
+    let newBookmark = bookmark.create();
+    const data = {
+      card_id: this.data.productcard.id,
+      user:this.data.currentUser
+    }
+    
+    newBookmark.set(data);
+    newBookmark.save().then((res)=>{
+      console.log('save bookmarkres',res);
+      const bookmarkArray = this.data.bookmarks;
+      bookmarkArray.push(res.data);
+
+      this.setData({
+        bookmarks:bookmarkArray,
 
       })
     })
 
-    
+
   },
-
-
-
-
-
-
 
 
   /**
