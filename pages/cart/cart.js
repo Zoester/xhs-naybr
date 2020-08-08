@@ -20,15 +20,31 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    wx.BaaS.auth.getCurrentUser().then(user => {
+      // user 为 currentUser 对象
+    
+      console.log(user)
+      this.setData({ currentUser: user })
+    
+    }, error => {
+      console.log(error)
+      this.setData({ currentUser: null })
+      wx.switchTab({
+        url: '/pages/profile/profile' // log in
+      });
+    })
+    console.log("this.globalData.userInfo", this.globalData.userInfo)
+
     // options is just parameter you use for all the results
 
-  const Bookmarks = new wx.BaaS.TableObject('cart');
+    const Bookmarks = new wx.BaaS.TableObject('cart')
+    
 
-  // NEW order with EXPAND will go to table & id 
-  Bookmarks.expand(['card_id',]).limit(1000).find().then((res) => {
-    this.setData({
-      bookmarks: res.data.objects,
-    })
+    // NEW order with EXPAND will go to table & id 
+    Bookmarks.expand(['card_id',]).limit(1000).find().then((res) => {
+      this.setData({
+        bookmarks: res.data.objects,
+      })
   });
 
   
