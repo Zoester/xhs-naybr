@@ -10,7 +10,8 @@ Page({
     allCard:{},
     productcard:{},
     desc:{},
-    reviews:[]
+    reviews:[],
+    likes:null
 
   },
 
@@ -45,6 +46,7 @@ Page({
       console.log(res);
       this.setData({
         productcard: res.data,
+        likes:res.data.likes
       })
     });
 
@@ -65,28 +67,55 @@ Page({
   createReview:function(event){
     console.log('create review',event);
     const content = event.detail.value.content;
+    console.log('clicked content', content);
 
     let Review = new wx.BaaS.TableObject('review');
     let newReview = Review.create();
     console.log('what is data', this.data)
     const data = {
-      product_id: this.data.restaurant.id,
-      review: content,
+      product_id: this.options.id,
+      reviews: content,
     }
     
     newReview.set(data);
     newReview.save().then((res)=>{
       console.log('save res',res);
-      const newReviews = this.data.comments;
+      const newReviews = this.data.reviews;
       newReviews.push(res.data);
 
       this.setData({
-        comments:newReviews,
+        reviews:newReviews,
 
       })
-    })
+    }) 
+  },
 
+  //click heart to like
+ voteUp(event){
+    console.log('like',event)
+    let likes = this.data.productcard.likes
+    let cardLikes = new wx.BaaS.TableObject('productCard')
+    let product = cardLikes.getWithoutData(event.currentTarget.dataset.id)
+    console.log('productValue', product)
+    product.set("likes", likes + 1).update().then((res)=>{
+      console.log("res",res)
+      this.setData({
+        likes:res.data.likes
+      })
+
+    });
+
+
+    //page.setData(productcard.likes:)
+
+
+
+      //use auth function to use the .get .set by the user object returned
     
+
+          
+        
+
   },
 
 
