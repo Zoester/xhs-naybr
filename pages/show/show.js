@@ -1,4 +1,5 @@
 // pages/show/show.js
+
 const app = getApp();
 
 Page({
@@ -7,6 +8,7 @@ Page({
    * Page initial data
    */
   data: {
+
     currentUser:{},
     allCard:{},
     productcard:{},
@@ -20,6 +22,7 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+
 
     this.setData({
       currentUser: app.globalData.userInfo,

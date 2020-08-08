@@ -87,6 +87,13 @@
 					"query": "",
 
 					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "Cart",
+					"pathName": "pages/cart/cart",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
