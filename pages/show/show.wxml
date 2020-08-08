@@ -52,13 +52,10 @@
         </view>
 
       <view class="submit-button">
-        <button type="primary" formType="submit">Add Review</button>
+        <button size="mini" type="primary" formType="submit">Add Review</button>
       </view>
     </form>
 
-    <view wx:for="{{reviews}}" class="review-items" wx:for-item="review" wx:key="id">
-      <view class="content">{{review.reviews}}</view>
-    </view>
   </view>
 </view>
 

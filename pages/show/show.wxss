@@ -75,8 +75,10 @@ Page {
 .reviews .submit-button {
   font-size: 10px;
   font-weight: lighter;
-  align-items: center;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .reviews .review-style {

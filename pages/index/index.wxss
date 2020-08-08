@@ -17,7 +17,7 @@
 
 
 .header .header-menu {
-  color: lightgrey;
+  color: rgb(158, 154, 154);
   font-size: 14px;
 }
 
