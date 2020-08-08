@@ -1,25 +1,43 @@
-// pages/cart/cart.js
+// pages/restaurant/detail.js
+const app = getApp(); // always get data via app
+
 Page({
 
   /**
    * Page initial data
    */
   data: {
-
+    currentUser:{},
+    allCard:{},
+    productcard:{},
+    desc:{},
+    reviews:[],
+    bookmarks:[]
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    // options is just parameter you use for all the results
 
-  },
+  const Bookmarks = new wx.BaaS.TableObject('cart');
 
+  // NEW order with EXPAND will go to table & id 
+  Bookmarks.expand(['card_id',]).limit(1000).find().then((res) => {
+    this.setData({
+      bookmarks: res.data.objects,
+    })
+  });
+
+  
+
+  }, 
+  
   /**
    * Lifecycle function--Called when page is initially rendered
    */
   onReady: function () {
-
   },
 
   /**
