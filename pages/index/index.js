@@ -20,6 +20,7 @@ Page({
     let tableName = 'productCard'
     let Cards = new wx.BaaS.TableObject(tableName)
     Cards.find().then((res) => {
+      console.log(res.data.objects);
       this.setData({
         cards: res.data.objects
       })

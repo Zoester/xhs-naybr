@@ -73,9 +73,17 @@
 					"scene": null
 				},
 				{
+					"id": 1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
 					"id": -1,
-					"name": "page/index/index",
-					"pathName": "page/index/index",
+					"name": "pages/show/show",
+					"pathName": "pages/show/show",
+					"query": "",
 					"scene": null
 				}
 			]

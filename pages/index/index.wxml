@@ -1,24 +1,22 @@
 <!--index.wxml-->
-
 <view class="header">
-  <view class="header-title">
-    <icon class="fas fa-headphones"></icon>
-    <view class="h1">音乐盒</view>
-    <view class="h2">Music Box</view>
-  </view>
+  <view class="header-menu">
+    <view class="h3">Listen. Vibe. Laugh. Love. Repeat.</view>    
+
+</view>
 </view>
 
 <view class="container">
-
-  <view class="card-product" wx:for="{{cards}}" wx:for-item="pc">
-    <view wx:for="{{pc.photos}}" wx:for-item="pcPhoto"></view>
-      <image class="productCardImage" src="{{pcPhoto}}"></image>
-    <view class="h3" bindtap="toProductCard" data-id="{{pc.id}}">{{pc.name}}</view>
-    <view class="h3">{{pc.description}}</view>
+  <view class="grid">
+    <view class="card-product" wx:for="{{cards}}" wx:for-item="pc">
+      <view wx:for="{{pc.photos}}" wx:for-item="pcPhoto">
+        <image mode="aspectFill" class="productCardImage" src="{{pcPhoto}}"></image>
+      </view>
+      <view class="h2" bindtap="toProductCard" data-id="{{pc.id}}">{{pc.name}}</view>
+      <view class="h3">{{pc.description}}</view>
+    </view>
   </view>
-
-
-
-
 </view>
+
+
 
