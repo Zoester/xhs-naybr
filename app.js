@@ -42,6 +42,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: wx.getStorageSync('userInfo') || null,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
   }
 })
