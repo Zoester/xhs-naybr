@@ -11,6 +11,7 @@
       <!-- <text class="userinfo-country">{{userInfo.country}}</text> -->
     </block>
   </view>
+  <view class="icon">🎵</view>
 </view>
 
 

@@ -3,7 +3,7 @@ const app = getApp()
 
 Page({
   data: {
-    welcome_text: 'Welcome to Xiaohongshu Profile Page',
+    welcome_text: 'Prepare your ears. Welcome to Music Box',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
