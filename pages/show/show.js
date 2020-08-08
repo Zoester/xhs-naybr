@@ -126,14 +126,13 @@ Page({
       console.log('bookmarkTable', res)
       this.setData({
         bookmarks: res.data.objects,
-        user: this.data.currentUser
       })
     })
     
     let newBookmark = bookmark.create();
     const data = {
       card_id: this.data.productcard.id,
-      user:this.data.currentUser
+      user_id:this.data.currentUser.id,
     }
     
     newBookmark.set(data);

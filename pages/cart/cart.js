@@ -21,9 +21,22 @@ Page({
   onLoad: function (options) {
     wx.BaaS.auth.getCurrentUser().then(user => {
       // user 为 currentUser 对象
-    
-      console.log(user)
-      this.setData({ currentUser: user })
+    const Bookmarks = new wx.BaaS.TableObject('cart')
+    let query = new wx.BaaS.Query();
+
+    console.log("id", user.id)
+    query.compare('user_id', '=', user.id);
+ 
+    // NEW order with EXPAND will go to table & id 
+    Bookmarks.setQuery(query).expand(['card_id']).find().then((res) => {
+      console.log(res)
+      this.setData({
+        bookmarks: res.data.objects,
+      })
+    })
+    console.log("user in Onload at first", user)
+    this.setData({ currentUser: user })
+
     
     }, error => {
       console.log(error)
@@ -32,19 +45,12 @@ Page({
         url: '/pages/profile/profile' // log in
       });
     })
-    console.log("this.globalData.userInfo", this.globalData.userInfo)
+    // console.log("this.globalData.userInfo", this.globalData.userInfo)
 
     // options is just parameter you use for all the results
 
-    const Bookmarks = new wx.BaaS.TableObject('cart')
     
-
-    // NEW order with EXPAND will go to table & id 
-    Bookmarks.expand(['card_id',]).limit(1000).find().then((res) => {
-      this.setData({
-        bookmarks: res.data.objects,
-      })
-  });
+  
 
   
 
