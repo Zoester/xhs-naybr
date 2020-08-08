@@ -74,7 +74,6 @@
 				},
 				{
 					"id": 1,
-
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
 					"query": "",
@@ -85,7 +84,6 @@
 					"name": "pages/show/show",
 					"pathName": "pages/show/show",
 					"query": "",
-
 					"scene": null
 				},
 				{
@@ -93,6 +91,12 @@
 					"name": "Cart",
 					"pathName": "pages/cart/cart",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/profile/profile",
+					"pathName": "pages/profile/profile",
 					"scene": null
 				}
 			]
