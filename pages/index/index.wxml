@@ -10,10 +10,10 @@
   <view class="grid">
     <view class="card-product" wx:for="{{cards}}" wx:for-item="pc">
       <view wx:for="{{pc.photos}}" wx:for-item="pcPhoto">
-        <image mode="aspectFill" class="productCardImage" src="{{pcPhoto}}"></image>
+        <image mode="aspectFill" class="productCardImage" bindtap="toProductCard" data-id="{{pc.id}}" src="{{pcPhoto}}"></image>
       </view>
       <view class="h2" bindtap="toProductCard" data-id="{{pc.id}}">{{pc.name}}</view>
-      <view class="h3">{{pc.description}}</view>
+      <view class="h3" bindtap="toProductCard" data-id="{{pc.id}}">{{pc.description}}</view>
     </view>
   </view>
 </view>
