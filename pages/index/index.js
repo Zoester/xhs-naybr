@@ -10,6 +10,7 @@ Page({
   toProductCard(event){
     let data = event.currentTarget.dataset
     let id = data.id
+    console.log("id", id)
     wx.navigateTo({
       url: `/pages/show/show?id=${id}`
     })

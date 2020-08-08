@@ -10,7 +10,7 @@
 
 <view class="container">
 
-  <view class="card-product" wx:for="{{productCard}}" wx:for-item="pc">
+  <view class="card-product" wx:for="{{cards}}" wx:for-item="pc">
     <view wx:for="{{pc.photos}}" wx:for-item="pcPhoto"></view>
       <image class="productCardImage" src="{{pcPhoto}}"></image>
     <view class="h3" bindtap="toProductCard" data-id="{{pc.id}}">{{pc.name}}</view>
