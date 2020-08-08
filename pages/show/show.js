@@ -1,5 +1,6 @@
 // pages/show/show.js
 const app = getApp();
+
 Page({
 
   /**
@@ -11,15 +12,15 @@ Page({
     productcard:{},
     desc:{},
     reviews:[],
-    likes:null
-
+    likes:null,
+    bookmarks:[],
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    console.log(options)
+
     this.setData({
       currentUser: app.globalData.userInfo,
     });
@@ -70,14 +71,17 @@ Page({
     console.log('clicked content', content);
 
     let Review = new wx.BaaS.TableObject('review');
+    //create empty record locally
     let newReview = Review.create();
     console.log('what is data', this.data)
+    //create data and then pass data inside local record
     const data = {
       product_id: this.options.id,
       reviews: content,
     }
     
     newReview.set(data);
+    //record in BaaS
     newReview.save().then((res)=>{
       console.log('save res',res);
       const newReviews = this.data.reviews;
@@ -104,25 +108,45 @@ Page({
       })
 
     });
-
-
-    //page.setData(productcard.likes:)
-
-
-
-      //use auth function to use the .get .set by the user object returned
-    
-
-          
-        
-
   },
 
+  navigateToProfile(){
+    wx.reLaunch({
+      url: '/pages/profile/profile',
+    })
+  },
+
+  addToBookmark(e){
+    console.log('bookmark',e)
+    let bookmark = new wx.BaaS.TableObject('cart')
+    bookmark.find().then((res)=>{
+      console.log('bookmarkTable', res)
+      this.setData({
+        bookmarks: res.data.objects,
+        user: this.data.currentUser
+      })
+    })
+    
+    let newBookmark = bookmark.create();
+    const data = {
+      card_id: this.data.productcard.id,
+      user:this.data.currentUser
+    }
+    
+    newBookmark.set(data);
+    newBookmark.save().then((res)=>{
+      console.log('save bookmarkres',res);
+      const bookmarkArray = this.data.bookmarks;
+      bookmarkArray.push(res.data);
+
+      this.setData({
+        bookmarks:bookmarkArray,
+
+      })
+    })
 
 
-
-
-
+  },
 
 
   /**

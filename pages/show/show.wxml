@@ -33,6 +33,12 @@
 
 <view class="container_reviews">
 
+    <view class="bookMark">
+    <button wx:if="{{!currentUser}}" bindtap="navigateToProfile"> Login to Bookmark </button>
+    <view wx:else>
+      <button size="mini" type="primary" data-id="{{productcard.id}}" bindtap="addToBookmark">add to bookmark</button>
+    </view>
+  </view>
   <view class="reviews">
 
     <view class="review-style">Read what others said:</view>
@@ -50,6 +56,9 @@
       </view>
     </form>
 
+    <view wx:for="{{reviews}}" class="review-items" wx:for-item="review" wx:key="id">
+      <view class="content">{{review.reviews}}</view>
+    </view>
   </view>
 </view>
 
