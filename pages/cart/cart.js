@@ -29,7 +29,7 @@ Page({
  
     // NEW order with EXPAND will go to table & id 
     Bookmarks.setQuery(query).expand(['card_id']).find().then((res) => {
-      console.log(res)
+      console.log("checking if cart works", res)
       this.setData({
         bookmarks: res.data.objects,
       })
@@ -66,7 +66,7 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-
+    this.onLoad()
   },
 
   /**
