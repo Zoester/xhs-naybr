@@ -21,15 +21,21 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "Home"
+        "text": "Home",
+        "iconPath": "/pages/images/Home.png",
+        "selectedIconPath": "/pages/images/Home.png"
       },
       {
         "pagePath": "pages/cart/cart",
-        "text": "Cart"
+        "text": "Cart",
+        "iconPath": "/pages/images/ecommerce.png",
+        "selectedIconPath": "/pages/images/ecommerce.png"
       },
       {
         "pagePath": "pages/profile/profile",
-        "text": "Profile"
+        "text": "Profile", 
+        "iconPath": "/pages/images/user.png",
+        "selectedIconPath": "/pages/images/user.png"
       }
     ]
   },
