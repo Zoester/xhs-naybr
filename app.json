@@ -28,9 +28,9 @@
       },
       {
         "pagePath": "pages/cart/cart",
-        "text": "Bookmark",
-        "iconPath": "/pages/images/ecommerce.png",
-        "selectedIconPath": "/pages/images/ecommerce.png"
+        "text": "Bookmarks",
+        "iconPath": "/pages/images/bookmark3.png",
+        "selectedIconPath": "/pages/images/bookmark3.png"
       },
       {
         "pagePath": "pages/profile/profile",

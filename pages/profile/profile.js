@@ -3,8 +3,16 @@ const app = getApp()
 
 Page({
   data: {
-    welcome_text: 'Welcome to Music Box',
-    userInfo: {}
+    welcome_text: 'Prepare your ears. Welcome to Music Box',
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
+  },
+  //事件处理函数
+  bindViewTap: function() {
+    wx.navigateTo({
+      url: '../logs/logs'
+    })
   },
   
   onLoad: function () {
